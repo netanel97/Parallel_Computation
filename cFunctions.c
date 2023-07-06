@@ -29,7 +29,7 @@ Point *readFromFile(int *N, int *K, double *D, int *tCount)
     /*Reading N lines of (X1,X2,a,b)*/
     for (int i = 0; i < *N; i++)
     {
-        if (fscanf(file, "%d %1f %1f %1f %1f", &allPoints[i].id, &allPoints[i].x1, &allPoints[i].x2, &allPoints[i].a, &allPoints[i].b) != 5)
+        if (fscanf(file, "%d %lf %lf %lf %lf", &allPoints[i].id, &allPoints[i].x1, &allPoints[i].x2, &allPoints[i].a, &allPoints[i].b) != 5)
         {
             fprintf(stderr, "Failed reading from file.\n");
             fclose(file);

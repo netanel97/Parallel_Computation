@@ -1,4 +1,6 @@
+NUM_OF_PROC = 1
 build:
+	mpicxx -c test.c -o test.o -lm
 	mpicxx -fopenmp -c main.c -o main.o
 	mpicxx -fopenmp -c cFunctions.c -o cFunctions.o
 	nvcc -I./Common  -gencode arch=compute_61,code=sm_61 -c cudaFunctions.cu -o cudaFunctions.o
@@ -6,10 +8,12 @@ build:
 	
 
 clean:
+	rm -f test
 	rm -f *.o ./mpiCudaOpemMP
 
 run:
-	mpiexec -np 2 ./mpiCudaOpemMP
+	./test
+	mpiexec -np ${NUM_OF_PROC} ./mpiCudaOpemMP
 
 runOn2:
-	mpiexec -np 2 -machinefile  mf  -map-by  node  ./mpiCudaOpemMP
+	mpiexec -np ${NUM_OF_PROC} -machinefile  mf  -map-by  node  ./mpiCudaOpemMP
