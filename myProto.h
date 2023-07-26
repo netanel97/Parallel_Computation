@@ -4,6 +4,7 @@
 #include <time.h>
 #include <math.h>
 
+#define CONSTRAINT 3
 #define MASTER 0
 #define THREDS_PER_BLOCK 256
 #define INPUT_FILE "input.txt"
@@ -18,4 +19,15 @@ typedef struct{
 }Point;
 
 
-Point *readFromFile(int* N,int* K,double* D,int* tCount);
+Point *readFromFile(int *N, int *K, double *D, int *tCount);
+
+void calculateTValues(int tCount,int startIndex,int endIndex, double *tValues);
+
+void inisitalizeProximitie(int *proximities,int tCount);
+
+//void computeOnGPU(int *N,int *K,int D,double tValue,Point *allPoints,int *proximities);
+
+
+//void calculateTValues(int tCount, double *tValues); /*Passed*/
+
+
